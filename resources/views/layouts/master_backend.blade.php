@@ -46,6 +46,7 @@
 </head>
 
 <body>
+    @include('sweetalert::alert')
     <!-- Layout wrapper -->
     <div class="layout-wrapper layout-content-navbar">
         <div class="layout-container">
@@ -53,7 +54,7 @@
 
             <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
                 <div class="app-brand demo">
-                    <a href="index.html" class="app-brand-link">
+                    <a href="{{ url('/dashboard') }}" class="app-brand-link">
                         <span class="app-brand-logo demo">
                         <img src="{{ asset('backend/assets/img/logoicon.png')}}" alt="">
                         </span>
@@ -73,28 +74,28 @@
                 <ul class="menu-inner py-1">
                     <!-- Dashboard -->
                     <li class="menu-item active">
-                        <a href="index.html" class="menu-link">
+                        <a href="{{ url('/dashboard') }}" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-home-circle"></i>
                             <div data-i18n="Analytics">Dashboard</div>
                         </a>
                     </li>  
                     
-                    <li class="menu-item">
-                        <a href="user.html" class="menu-link">
+                    <li class="menu-item ">
+                        <a href="{{ route('u.index') }}" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-user-circle"></i>
                             <div data-i18n="Analytics">User</div>
                         </a>
                     </li>  
 
                     <li class="menu-item">
-                        <a href="category.html" class="menu-link">
+                        <a href="{{ route('c.index') }}" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-grid-alt"></i>
                             <div data-i18n="Analytics">Category</div>
                         </a>
                     </li>  
 
                     <li class="menu-item">
-                        <a href="product.html" class="menu-link">
+                        <a href="{{ route('p.index') }}" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-cart-alt"></i>
                             <div data-i18n="Analytics">Product</div>
                         </a>
@@ -144,8 +145,8 @@
                                                     </div>
                                                 </div>
                                                 <div class="flex-grow-1">
-                                                    <span class="fw-semibold d-block">John Doe</span>
-                                                    <small class="text-muted">Admin</small>
+                                                    <span class="fw-semibold d-block">{{ Auth::user()->name }}</span>
+                                                    <small class="text-muted">{{ Auth::user()->email }}</small>
                                                 </div>
                                             </div>
                                         </a>
@@ -154,7 +155,7 @@
                                         <div class="dropdown-divider"></div>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="profile.html">
+                                        <a class="dropdown-item" href="{{ route('profile.edit') }}">
                                             <i class="bx bx-user me-2"></i>
                                             <span class="align-middle">My Profile</span>
                                         </a>
